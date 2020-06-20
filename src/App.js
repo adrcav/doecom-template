@@ -1,14 +1,18 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+
+import Router from './Router';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="/logo.png" className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <>
+      <ToastContainer />
+      <Router />
+    </>
   );
 }
 
