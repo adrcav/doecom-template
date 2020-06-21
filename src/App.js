@@ -10,7 +10,9 @@ import Router from './Router';
 function App() {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+      />
       <Router />
     </>
   );

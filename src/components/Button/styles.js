@@ -9,6 +9,7 @@ export const Container = styled.button`
   display: flex;
   align-items: center;
   border: 1.5px solid;
+  transition: all .3s ease-in-out;
 
   & > .icon {
     width: 22px;
@@ -19,12 +20,14 @@ export const Container = styled.button`
     font-size: .75rem;
     border-radius: 50%;
     margin-right: 5px;
+    transition: all .3s ease-in-out;
   }
 
   & > p {
     font-size: .9rem;
     font-weight: 500;
     line-height: 1rem;
+    transition: all .3s ease-in-out;
   }
 
   &.primary {
@@ -40,6 +43,11 @@ export const Container = styled.button`
       color: white;
       margin: 0;
     }
+
+    &:hover {
+      background-color: ${colors.action.primary.hover};
+      border-color: ${colors.action.primary.hover};
+    }
   }
   &.primary-outline {
     background-color: transparent;
@@ -53,6 +61,19 @@ export const Container = styled.button`
     p {
       color: ${colors.action.primary.default};
       margin: 0;
+    }
+
+    &:hover {
+      border-color: ${colors.action.primary.hover};
+
+      .icon {
+        background-color: ${rgba(colors.action.primary.hover, 0.15)};
+        color: ${colors.action.primary.hover};
+      }
+
+      p {
+        color: ${colors.action.primary.hover};
+      }
     }
   }
 `;

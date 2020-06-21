@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { margins } from './components/theme';
 
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Loading from './components/Loading';
 // import { errorMessage } from './services/errors';
 
@@ -21,6 +22,7 @@ const Router = () => {
           <Route path="/" component={Main} />
         </Switch>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };

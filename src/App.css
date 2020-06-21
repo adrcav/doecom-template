@@ -23,8 +23,8 @@ a {
   text-decoration: none !important;
 }
 
-.App-logo {
-  width: 250px;
-  margin: 20px auto 0;
-  display: block;
+/* Toastify */
+.Toastify__toast-body {
+  font-size: .9rem;
+  font-family: unset;
 }
