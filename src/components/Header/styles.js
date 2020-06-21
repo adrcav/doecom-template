@@ -25,6 +25,10 @@ export const Logo = styled.img`
   @media (max-width: 991px) {
     height: 40px;
   }
+
+  @media (max-width: 420px) {
+    height: 35px;
+  }
 `;
 
 export const Account = styled.div`
@@ -55,6 +59,11 @@ export const Account = styled.div`
     height: 50px;
     border: 2px solid #E7E8E9;
     border-radius: 50%;
+
+    @media (max-width: 768px) {
+      width: 45px;
+      height: 45px;
+    }
   }
 
   .button-menu-expand {
