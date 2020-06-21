@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Container } from './styles';
 import Button from '../Button';
 
-const Menu = ({ data, landscape, show = false }) => (
+const Menu = ({ data, landscape, show = false, onClickVertical }) => (
   <Container className={classNames(landscape, {
     'show': landscape === 'vertical' && show,
   })}>
@@ -16,7 +16,13 @@ const Menu = ({ data, landscape, show = false }) => (
 
       return (
         <li key={menu.url} style={{ display: (privateMenu ? 'none' : '') }}>
-          <NavLink className="menu-item" activeClassName="active" to={menu.url} exact={menu.exact || false}>
+          <NavLink
+            className="menu-item"
+            activeClassName="active"
+            to={menu.url}
+            exact={menu.exact || false}
+            onClick={onClickVertical || null}
+          >
             <div className="icon">
               <Icon />
             </div>
@@ -29,10 +35,10 @@ const Menu = ({ data, landscape, show = false }) => (
       <li key="mobile-buttons">
         <div className="menu-item" style={{ width: '100%' }}>
           <div className="d-flex justify-content-center" style={{ width: '100%' }}>
-            <NavLink to="/login" style={{ marginRight: '10px' }}>
+            <NavLink to="/login" style={{ marginRight: '10px' }} onClick={onClickVertical || null}>
               <Button theme="primary-outline" icon="FaSignInAlt" value="Entrar" />
             </NavLink>
-            <NavLink to="/register">
+            <NavLink to="/register" onClick={onClickVertical || null}>
               <Button theme="primary" icon="FaUserPlus" value="Cadastrar-se" />
             </NavLink>
           </div>

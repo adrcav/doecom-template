@@ -39,12 +39,16 @@ const Header = ({ userInfo }) => {
     },
   ];
 
+  const handleMenuClick = () => {
+    setShowMenu(false);
+  };
+
   return (
     <>
       <Container>
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-            <NavLink to="/">
+            <NavLink to="/" onClick={handleMenuClick}>
               <Logo src="/logo.png" alt="Doecom" />
             </NavLink>
 
@@ -69,7 +73,12 @@ const Header = ({ userInfo }) => {
           </div>
         </div>
       </Container>
-      <Menu landscape="vertical" data={menuList} show={showMenu} />
+      <Menu
+        landscape="vertical"
+        data={menuList}
+        show={showMenu}
+        onClickVertical={handleMenuClick}
+      />
       <HeaderWrapper
         className={classNames({ 'show': showMenu })}
         onClick={() => setShowMenu(false)}
