@@ -1,0 +1,45 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import * as FontAwesome from 'react-icons/fa';
+import classNames from 'classnames';
+
+import { Container } from './styles';
+import Button from '../Button';
+
+const Menu = ({ data, landscape, show = false }) => (
+  <Container className={classNames(landscape, {
+    'show': landscape === 'vertical' && show,
+  })}>
+    {data.map(menu => {
+      const privateMenu = menu.private || false;
+      let Icon = FontAwesome[menu.icon] || FontAwesome['FaExternalLinkAlt'];
+
+      return (
+        <li key={menu.url} style={{ display: (privateMenu ? 'none' : '') }}>
+          <NavLink className="menu-item" activeClassName="active" to={menu.url} exact={menu.exact || false}>
+            <div className="icon">
+              <Icon />
+            </div>
+            <p>{menu.title}</p>
+          </NavLink>
+        </li>
+      );
+    })}
+    {landscape === 'vertical' && (
+      <li key="mobile-buttons">
+        <div className="menu-item" style={{ width: '100%' }}>
+          <div className="d-flex justify-content-center" style={{ width: '100%' }}>
+            <NavLink to="/login" style={{ marginRight: '10px' }}>
+              <Button theme="primary-outline" icon="FaSignInAlt" value="Entrar" />
+            </NavLink>
+            <NavLink to="/register">
+              <Button theme="primary" icon="FaUserPlus" value="Cadastrar-se" />
+            </NavLink>
+          </div>
+        </div>
+      </li>
+    )}
+  </Container>
+);
+
+export default Menu;
