@@ -21,6 +21,7 @@ export const Container = styled.button`
     background-color: ${colors.action.primary.default};
     border-color: ${colors.action.primary.default};
     color: white;
+    box-shadow: 0 5px 15px 1px ${rgba(colors.action.primary.default, 0.25)};
 
     &:hover {
       background-color: ${colors.action.primary.hover};
@@ -35,6 +36,7 @@ export const Container = styled.button`
     background-color: transparent;
     border-color: ${colors.action.primary.default};
     color: ${colors.action.primary.default};
+    box-shadow: 0 5px 15px 1px ${rgba(colors.action.primary.default, 0.25)};
 
     &:hover {
       border-color: ${colors.action.primary.hover};
@@ -50,6 +52,7 @@ export const Container = styled.button`
     background-color: ${colors.action.secondary.default};
     border-color: ${colors.action.secondary.default};
     color: white;
+    box-shadow: 0 5px 15px 1px ${rgba(colors.action.secondary.default, 0.25)};
 
     &:hover {
       background-color: ${colors.action.secondary.hover};
@@ -64,6 +67,7 @@ export const Container = styled.button`
     background-color: transparent;
     border-color: ${colors.action.secondary.default};
     color: ${colors.action.secondary.default};
+    box-shadow: 0 5px 15px 1px ${rgba(colors.action.secondary.default, 0.25)};
 
     &:hover {
       border-color: ${colors.action.secondary.hover};

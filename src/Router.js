@@ -9,6 +9,7 @@ import Loading from './components/Loading';
 
 import Main from './containers/Main';
 import Cause from './containers/Cause';
+import Give from './containers/Give';
 
 const Router = () => {
   let loading = false;
@@ -22,6 +23,7 @@ const Router = () => {
         <Switch>
           <Route path="/" component={Main} exact />
           <Route path="/cause/:id" component={Cause} />
+          <Route path="/give/:id" component={Give} />
         </Switch>
       </div>
       <Footer />
