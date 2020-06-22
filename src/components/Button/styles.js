@@ -4,7 +4,7 @@ import { rgba } from 'polished';
 import { colors } from '../theme';
 
 export const Container = styled.button`
-  padding: 2px 18px 3px;
+  padding: 3px 18px 3px;
   border-radius: 15px;
   display: flex;
   align-items: center;

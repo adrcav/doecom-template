@@ -8,6 +8,7 @@ import Loading from './components/Loading';
 // import { errorMessage } from './services/errors';
 
 import Main from './containers/Main';
+import Cause from './containers/Cause';
 
 const Router = () => {
   let loading = false;
@@ -19,7 +20,8 @@ const Router = () => {
       <Header />
       <div style={{ marginTop: margins.header }}>
         <Switch>
-          <Route path="/" component={Main} />
+          <Route path="/" component={Main} exact />
+          <Route path="/cause/:id" component={Cause} />
         </Switch>
       </div>
       <Footer />
