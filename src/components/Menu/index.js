@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import * as FontAwesome from 'react-icons/fa';
 import classNames from 'classnames';
 
@@ -9,6 +9,7 @@ import { Container } from './styles';
 import Button from '../Button';
 
 const Menu = ({ data, landscape, show = false, onClickVertical }) => {
+  const history = useHistory();
   const auth = useContext(AuthContext);
 
   return (
@@ -40,7 +41,13 @@ const Menu = ({ data, landscape, show = false, onClickVertical }) => {
         <li key="mobile-buttons">
           <div className="menu-item" style={{ width: '100%' }}>
             <div className="d-flex justify-content-center" style={{ width: '100%' }}>
-              <NavLink to="/login" style={{ marginRight: '10px' }} onClick={onClickVertical || null}>
+              <NavLink
+                to={{
+                  pathname: '/login',
+                  state: { redirectUrl: history.location.pathname }
+                }}
+                style={{ marginRight: '10px' }} onClick={onClickVertical || null}
+              >
                 <Button theme="primary-outline" icon="FaSignInAlt" value="Entrar" />
               </NavLink>
               <NavLink to="/register" onClick={onClickVertical || null}>

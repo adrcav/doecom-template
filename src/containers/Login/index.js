@@ -8,9 +8,14 @@ import Input from '../../components/Input';
 import FormButton from '../../components/FormButton';
 import Title from '../../components/Title';
 
-export const Login = () => {
+export const Login = ({ location }) => {
   const history = useHistory();
   const auth = useContext(AuthContext);
+  let redirectUrl = '';
+
+  if (location.state) {
+    redirectUrl = location.state.redirectUrl || null;
+  }
 
   useEffect(() => {
     if (auth.isAuthenticated()) {
@@ -29,8 +34,7 @@ export const Login = () => {
     };
 
     auth.setSession(data);
-    // history.push('/');
-    window.location.href = '/';
+    window.location.href = redirectUrl || '/';
   };
 
   return (

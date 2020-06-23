@@ -64,7 +64,7 @@ const Header = ({ userInfo }) => {
               <Account>
                 {!auth.isAuthenticated() && (
                   <p>
-                    <strong onClick={() => history.push('/login')}>Entrar</strong> ou<br />
+                    <strong onClick={() => history.push('/login', { redirectUrl: history.location.pathname })}>Entrar</strong> ou<br />
                     <strong onClick={() => history.push('/register')}>cadastrar-se</strong>
                   </p>
                 )}
