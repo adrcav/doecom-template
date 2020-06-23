@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { margins } from './components/theme';
+
+import { AuthContext } from './services/auth';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -15,15 +17,24 @@ import Cause from './containers/Cause';
 import Give from './containers/Give';
 import Login from './containers/Login';
 import Register from './containers/Register';
+import Logout from './containers/Logout';
+
+import { userInfo as dataUserInfo } from './util/data';
 
 const Router = () => {
   let loading = false;
+  const auth = useContext(AuthContext);
+  let userInfo = {};
+
+  if (auth.isAuthenticated()) {
+    userInfo = dataUserInfo;
+  }
 
   if (loading) return (<Loading />);
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header userInfo={userInfo} />
       <div style={{ marginTop: margins.header }}>
         <Switch>
           <Route path="/" component={Main} exact />
@@ -33,6 +44,7 @@ const Router = () => {
           <Route path="/cause/:id" component={Cause} />
           <Route path="/give/success" component={GiveSuccess} />
           <Route path="/give/:id" component={Give} />
+          <Route path="/logout" component={Logout} />
         </Switch>
       </div>
       <Footer />

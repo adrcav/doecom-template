@@ -78,4 +78,35 @@ export const Container = styled.button`
       box-shadow: 0 0 0 0.2rem ${rgba(colors.action.secondary.hover, 0.25)};
     }
   }
+
+  &.danger {
+    background-color: ${colors.action.danger.default};
+    border-color: ${colors.action.danger.default};
+    color: white;
+    box-shadow: 0 5px 15px 1px ${rgba(colors.action.danger.default, 0.25)};
+
+    &:hover {
+      background-color: ${colors.action.danger.hover};
+      border-color: ${colors.action.danger.hover};
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem ${rgba(colors.action.danger.hover, 0.25)};
+    }
+  }
+  &.danger-outline {
+    background-color: transparent;
+    border-color: ${colors.action.danger.default};
+    color: ${colors.action.danger.default};
+    box-shadow: 0 5px 15px 1px ${rgba(colors.action.danger.default, 0.25)};
+
+    &:hover {
+      border-color: ${colors.action.danger.hover};
+      color: ${colors.action.danger.hover};
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem ${rgba(colors.action.danger.hover, 0.25)};
+    }
+  }
 `;

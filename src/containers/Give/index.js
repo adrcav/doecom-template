@@ -59,6 +59,8 @@ const Give = ({ match }) => {
                 icon="FaDollarSign"
                 className="form-control"
                 placeholder="Informe o valor"
+                maskType="currency"
+                pattern="*"
                 required={true}
               />
             </div>

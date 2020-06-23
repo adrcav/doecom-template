@@ -24,4 +24,9 @@ export const Container = styled.div`
     background-color: ${rgba(colors.action.secondary.default, 0.15)};
     color: ${colors.action.secondary.default};
   }
+
+  &.danger {
+    background-color: ${rgba(colors.action.danger.default, 0.15)};
+    color: ${colors.action.danger.default};
+  }
 `;

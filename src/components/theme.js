@@ -10,6 +10,10 @@ export const colors = {
       hover: '#229754',
       active: '#1F8B4D',
     },
+    danger: {
+      default: '#EB5757',
+      hover: '#E74C3C',
+    },
   },
   base: {
     light: '#FAFAFA',

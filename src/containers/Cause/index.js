@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { CauseImage, CauseTitleSection } from './styles';
@@ -6,17 +6,25 @@ import { CauseImage, CauseTitleSection } from './styles';
 import BackButton from '../../components/BackButton';
 import FormButton from '../../components/FormButton';
 import CauseInfo from '../../components/CauseInfo';
+import ActionRequiresLogin from '../../components/ActionRequiresLogin';
 
+import { AuthContext } from '../../services/auth';
 import { causes as dataCauses } from '../../util/data';
 
 const Cause = ({ match }) => {
   const history = useHistory();
+  const auth = useContext(AuthContext);
   const { id } = match.params;
+  const [showLoginOrRegister, setShowLoginOrRegister] = useState(false);
 
   const cause = dataCauses.filter(cause => cause._id === id)[0] || null;
 
   const handleDonate = () => {
-    history.push(`/give/${cause._id}`);
+    if (auth.isAuthenticated()) {
+      history.push(`/give/${cause._id}`);
+    }
+
+    setShowLoginOrRegister(true);
   };
 
   return (
@@ -52,6 +60,11 @@ const Cause = ({ match }) => {
           />
         </div>
       </div>
+
+      <ActionRequiresLogin
+        show={showLoginOrRegister}
+        onClose={() => setShowLoginOrRegister(!showLoginOrRegister)}
+      />
     </div>
   );
 };

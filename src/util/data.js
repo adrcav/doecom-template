@@ -118,3 +118,10 @@ export const states = [
   { name: 'Sergipe', uf: 'SE' },
   { name: 'Tocantins', uf: 'TO' },
 ];
+
+export const userInfo = {
+  _id: 'hash-id-account-1',
+  name: 'Ricardo Silva',
+  email: 'ricardo@doecom.netlify.app',
+  avatar: 'https://i.imgur.com/5Tdyd1P.jpg',
+};

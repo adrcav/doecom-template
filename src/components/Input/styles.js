@@ -32,30 +32,56 @@ export const InputGroup = styled.div`
       color: ${colors.action.primary.default};
     }
   }
-`;
 
-export const Container = styled.input`
-  display: block;
-  width: 100%;
-  height: auto;
-  background-color: ${colors.base.light};
-  padding: 15px 20px;
-  border: 1.5px solid ${colors.muted.m2};
-  border-radius: 6px;
-  outline: none;
-  transition: all .3s ease-in-out;
-  color: ${colors.base.dark};
+  input {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: ${colors.base.light};
+    padding: 15px 20px;
+    border: 1.5px solid ${colors.muted.m2};
+    border-radius: 6px;
+    outline: none;
+    transition: all .3s ease-in-out;
+    color: ${colors.base.dark};
 
-  &::placeholder {
-    color: ${colors.muted.m3};
-  }
+    &::placeholder {
+      color: ${colors.muted.m3};
+    }
 
-  &:focus {
-    border-color: ${colors.action.primary.default};
-    box-shadow: 0 0 0 0.2rem ${rgba(colors.action.primary.default, 0.1)};
+    &:focus {
+      border-color: ${colors.action.primary.default};
+      box-shadow: 0 0 0 0.2rem ${rgba(colors.action.primary.default, 0.1)};
 
-    & + label {
-      color: ${colors.action.primary.default};
+      & + label {
+        color: ${colors.action.primary.default};
+      }
     }
   }
 `;
+
+// export const Container = styled.input`
+//   display: block;
+//   width: 100%;
+//   height: auto;
+//   background-color: ${colors.base.light};
+//   padding: 15px 20px;
+//   border: 1.5px solid ${colors.muted.m2};
+//   border-radius: 6px;
+//   outline: none;
+//   transition: all .3s ease-in-out;
+//   color: ${colors.base.dark};
+
+//   &::placeholder {
+//     color: ${colors.muted.m3};
+//   }
+
+//   &:focus {
+//     border-color: ${colors.action.primary.default};
+//     box-shadow: 0 0 0 0.2rem ${rgba(colors.action.primary.default, 0.1)};
+
+//     & + label {
+//       color: ${colors.action.primary.default};
+//     }
+//   }
+// `;

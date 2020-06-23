@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+
+import { AuthContext } from '../../services/auth';
 
 import BackButton from '../../components/BackButton';
 import Input from '../../components/Input';
@@ -8,11 +10,27 @@ import Title from '../../components/Title';
 
 export const Login = () => {
   const history = useHistory();
+  const auth = useContext(AuthContext);
+
+  useEffect(() => {
+    if (auth.isAuthenticated()) {
+      history.push('/');
+    }
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    history.push('/');
+    const data = {
+      user: 'id-hash-account-1',
+      accessToken: 'token-example',
+      expiresIn: new Date().getTime(),
+      tokenType: 'Bearer'
+    };
+
+    auth.setSession(data);
+    // history.push('/');
+    window.location.href = '/';
   };
 
   return (

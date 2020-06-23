@@ -1,8 +1,9 @@
 import React from 'react';
 import * as FontAwesome from 'react-icons/fa';
 import classNames from 'classnames';
+import CurrencyInput from 'react-currency-masked-input';
 
-import { InputGroup, Container } from './styles';
+import { InputGroup } from './styles';
 import Label from '../Label';
 
 const Input = (props) => {
@@ -17,7 +18,13 @@ const Input = (props) => {
       <InputGroup className={classNames({
         'has-icon': props.icon
       })}>
-        <Container {...props} />
+        {(!props.maskType && (
+          <input {...props} />
+        ))}
+        {props.maskType === 'currency' && (
+          <CurrencyInput separator="," {...props} />
+        )}
+
         {props.icon && (
           <div className="icon">
             <Icon />

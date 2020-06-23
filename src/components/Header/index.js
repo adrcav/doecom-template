@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';
 import classNames from 'classnames';
+
+import { AuthContext } from '../../services/auth';
 
 import {
   Container,
@@ -14,6 +16,7 @@ import Menu from '../Menu';
 
 const Header = ({ userInfo }) => {
   const history = useHistory();
+  const auth = useContext(AuthContext);
   const [showMenu, setShowMenu] = useState(false);
 
   const menuList = [
@@ -33,7 +36,7 @@ const Header = ({ userInfo }) => {
     {
       title: 'Sair da conta',
       icon: 'FaSignOutAlt',
-      url: '/account/logout',
+      url: '/logout',
       exact: true,
       private: true,
     },
@@ -59,13 +62,21 @@ const Header = ({ userInfo }) => {
             <nav>
               <Menu landscape="horizontal" data={menuList} />
               <Account>
-                <p>
-                  <strong onClick={() => history.push('/login')}>Entrar</strong> ou<br />
-                  <strong onClick={() => history.push('/register')}>cadastrar-se</strong>
-                </p>
+                {!auth.isAuthenticated() && (
+                  <p>
+                    <strong onClick={() => history.push('/login')}>Entrar</strong> ou<br />
+                    <strong onClick={() => history.push('/register')}>cadastrar-se</strong>
+                  </p>
+                )}
+                {auth.isAuthenticated() && (
+                  <p>
+                    Olá,<br />
+                    <strong>{userInfo.name.split(' ')[0]}</strong>
+                  </p>
+                )}
                 <img
-                  src="/no-avatar.png"
-                  alt="Sem avatar"
+                  src={userInfo.avatar || '/no-avatar.png'}
+                  alt={userInfo.name || 'Sem avatar'}
                   onClick={handleMenuClick}
                 />
                 <div
