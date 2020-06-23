@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import { AuthContext } from '../../services/auth';
 
 import BackButton from '../../components/BackButton';
 import Input from '../../components/Input';
@@ -12,6 +14,7 @@ import { states as dataStates } from '../../util/data';
 
 export const Register = () => {
   const history = useHistory();
+  const auth = useContext(AuthContext);
   const [agreedTerms, setAgreedTerms] = useState(false);
 
   const states = dataStates.map(state => {
@@ -21,10 +24,16 @@ export const Register = () => {
     };
   });
 
+  useEffect(() => {
+    if (auth.isAuthenticated()) {
+      history.push('/');
+    }
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    history.push('/');
+    history.push('/register/success');
   };
 
   const agreeTerms = () => {

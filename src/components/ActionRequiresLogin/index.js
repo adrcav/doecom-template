@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import { FaTimes } from 'react-icons/fa';
 
@@ -13,6 +13,8 @@ import {
 import Button from '../Button';
 
 const ActionRequiresLogin = ({ show = false, onClose = null }) => {
+  const history = useHistory();
+
   const handleModalClick = (event) => {
     event.stopPropagation();
   };
@@ -28,7 +30,13 @@ const ActionRequiresLogin = ({ show = false, onClose = null }) => {
           <p>É necessário estar logado com uma conta da Doecom para realizar esta operação. Para continuar, escolha uma das opções abaixo:</p>
 
           <div className="d-flex justify-content-center" style={{ width: '100%', marginTop: '15px' }}>
-            <NavLink to="/login" style={{ marginRight: '10px' }}>
+            <NavLink
+              to={{
+                pathname: '/login',
+                state: { redirectUrl: history.location.pathname }
+              }}
+              style={{ marginRight: '10px' }}
+            >
               <Button theme="primary-outline" icon="FaSignInAlt" value="Entrar" />
             </NavLink>
             <NavLink to="/register">
