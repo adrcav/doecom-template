@@ -8,25 +8,6 @@ export const InputGroup = styled.div`
   padding: 0;
   margin: 0 0 10px;
 
-  &.has-icon {
-    input {
-      padding-left: 40px;
-    }
-  }
-
-  .icon {
-    width: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    color: ${colors.muted.m3};
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-  }
-
   &:focus-within {
     & + label {
       color: ${colors.action.primary.default};
@@ -34,10 +15,11 @@ export const InputGroup = styled.div`
   }
 `;
 
-export const Container = styled.input`
+export const Container = styled.select`
   display: block;
   width: 100%;
   height: auto;
+  min-height: 57px;
   background-color: ${colors.base.light};
   padding: 15px 20px;
   border: 1.5px solid ${colors.muted.m2};

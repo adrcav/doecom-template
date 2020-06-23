@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import * as FontAwesome from 'react-icons/fa';
 
 import { SafeAlert } from './styles';
@@ -15,6 +16,7 @@ import { causes as dataCauses } from '../../util/data';
 
 const Give = ({ match }) => {
   const { id } = match.params;
+  const history = useHistory();
 
   const cause = dataCauses.filter(cause => cause._id === id)[0] || null;
   const paymentMethods = [
@@ -31,7 +33,11 @@ const Give = ({ match }) => {
   ];
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+
     console.log('> form', event.target);
+
+    history.push('/give/success');
   };
 
   return (
@@ -48,12 +54,12 @@ const Give = ({ match }) => {
             <div className="form-group">
               <Input
                 label="Valor:"
-                type="text"
+                type="tel"
                 name="value"
                 icon="FaDollarSign"
                 className="form-control"
                 placeholder="Informe o valor"
-                required
+                required={true}
               />
             </div>
 

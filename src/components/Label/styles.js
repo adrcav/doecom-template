@@ -7,4 +7,8 @@ export const Container = styled.label`
   color: ${colors.muted.m4};
   margin-bottom: .3rem;
   transition: all .3s ease-in-out;
+
+  &.active {
+    color: ${colors.action.primary.default};
+  }
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import * as FontAwesome from 'react-icons/fa';
 import classNames from 'classnames';
 
-import { Wrapper, Container } from './styles';
+import { InputGroup, Container } from './styles';
 import Label from '../Label';
 
 const Input = (props) => {
@@ -14,7 +14,7 @@ const Input = (props) => {
 
   return (
     <div className="d-flex flex-column-reverse">
-      <Wrapper className={classNames({
+      <InputGroup className={classNames({
         'has-icon': props.icon
       })}>
         <Container {...props} />
@@ -23,7 +23,7 @@ const Input = (props) => {
             <Icon />
           </div>
         )}
-      </Wrapper>
+      </InputGroup>
       {props.label && (
         <Label value={props.label} />
       )}

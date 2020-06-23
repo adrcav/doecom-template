@@ -39,16 +39,20 @@ const Header = ({ userInfo }) => {
     },
   ];
 
-  const handleMenuClick = () => {
+  const handleCloseMenu = () => {
     setShowMenu(false);
   };
+
+  const handleMenuClick = () => {
+    setShowMenu(!showMenu);
+  }
 
   return (
     <>
       <Container>
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-            <NavLink to="/" onClick={handleMenuClick}>
+            <NavLink to="/" onClick={handleCloseMenu}>
               <Logo src="/logo.png" alt="Doecom" />
             </NavLink>
 
@@ -59,12 +63,16 @@ const Header = ({ userInfo }) => {
                   <strong onClick={() => history.push('/login')}>Entrar</strong> ou<br />
                   <strong onClick={() => history.push('/register')}>cadastrar-se</strong>
                 </p>
-                <img src="/no-avatar.png" alt="Sem avatar" />
+                <img
+                  src="/no-avatar.png"
+                  alt="Sem avatar"
+                  onClick={handleMenuClick}
+                />
                 <div
                   className={classNames('button-menu-expand', {
                     'rotate': showMenu
                   })}
-                  onClick={() => setShowMenu(!showMenu)}
+                  onClick={handleMenuClick}
                 >
                   <FaChevronDown />
                 </div>
@@ -77,11 +85,11 @@ const Header = ({ userInfo }) => {
         landscape="vertical"
         data={menuList}
         show={showMenu}
-        onClickVertical={handleMenuClick}
+        onClickVertical={handleCloseMenu}
       />
       <HeaderWrapper
         className={classNames({ 'show': showMenu })}
-        onClick={() => setShowMenu(false)}
+        onClick={handleCloseMenu}
       />
     </>
   );
