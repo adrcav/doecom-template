@@ -15,6 +15,11 @@ const Footer = () => (
             <p>Política de Privacidade</p>
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/terms-of-use">
+            <p>Termos de Uso</p>
+          </NavLink>
+        </li>
       </ul>
     </Container>
   </div>

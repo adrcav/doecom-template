@@ -18,6 +18,8 @@ import Give from './containers/Give';
 import Login from './containers/Login';
 import Register from './containers/Register';
 import Logout from './containers/Logout';
+import PrivacyPolicy from './containers/PrivacyPolicy';
+import TermsOfUse from './containers/TermsOfUse';
 
 import { userInfo as dataUserInfo } from './util/data';
 
@@ -45,6 +47,8 @@ const Router = () => {
           <Route path="/give/success" component={GiveSuccess} />
           <Route path="/give/:id" component={Give} />
           <Route path="/logout" component={Logout} />
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/terms-of-use" component={TermsOfUse} />
         </Switch>
       </div>
       <Footer />

@@ -20,11 +20,33 @@ export const Container = styled.div`
     transition: all .3s ease-in-out;
   }
 
-  ul {
+  & > ul {
     margin: 0;
 
     li {
       display: inline-block;
+      position: relative;
+      padding-right: 15px;
+      margin-right: 15px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        background-color: rgba(0, 0, 0, .1);
+        top: 1px;
+        right: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+        margin-right: 0;
+
+        &:after {
+          display: none;
+        }
+      }
 
       &:hover {
         p {

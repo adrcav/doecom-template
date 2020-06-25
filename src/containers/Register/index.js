@@ -47,6 +47,13 @@ export const Register = () => {
       <BackButton />
 
       <Title value="Vamos lá!" />
+      <p style={{
+        textAlign: 'right',
+        color: '#999',
+        fontStyle: 'italic',
+        fontSize: '.9rem',
+        margin: '-10px 0 10px'
+      }}>(*) Campo obrigatório</p>
 
       <div className="row justify-content-center">
         <div className="col-lg-6">

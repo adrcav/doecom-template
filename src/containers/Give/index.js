@@ -48,12 +48,20 @@ const Give = ({ match }) => {
 
       <CauseInfo data={cause} />
 
+      <p style={{
+        textAlign: 'right',
+        color: '#999',
+        fontStyle: 'italic',
+        fontSize: '.9rem',
+        margin: 0
+      }}>(*) Campo obrigatório</p>
+
       <div className="row">
         <div className="col-lg-6">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <Input
-                label="Valor:"
+                label="Valor: *"
                 type="tel"
                 name="value"
                 icon="FaDollarSign"
@@ -67,7 +75,7 @@ const Give = ({ match }) => {
 
             <div className="row">
               <div className="col-12">
-                <Label value="Método de pagamento:" />
+                <Label value="Método de pagamento: *" />
               </div>
               {paymentMethods.map(method => (
                 <div key={method.value} className="col-6">

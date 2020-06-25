@@ -10,7 +10,7 @@ const Select = (props) => {
         <Container {...props}>
           <option value="">{props.placeholderValue || 'Selecione'}</option>
           {props.options.map(option => (
-            <option value={option.value}>{option.text}</option>
+            <option key={option.value} value={option.value}>{option.text}</option>
           ))}
         </Container>
       </InputGroup>
