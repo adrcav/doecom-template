@@ -17,6 +17,7 @@ import Cause from './containers/Cause';
 import Give from './containers/Give';
 import Login from './containers/Login';
 import Register from './containers/Register';
+import Account from './containers/Account';
 import Logout from './containers/Logout';
 import PrivacyPolicy from './containers/PrivacyPolicy';
 import TermsOfUse from './containers/TermsOfUse';
@@ -43,6 +44,7 @@ const Router = () => {
           <Route path="/login" component={Login} />
           <Route path="/register/success" component={RegisterSuccess} />
           <Route path="/register" component={Register} />
+          <Route path="/account" component={Account} />
           <Route path="/cause/:id" component={Cause} />
           <Route path="/give/success" component={GiveSuccess} />
           <Route path="/give/:id" component={Give} />
