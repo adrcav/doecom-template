@@ -24,23 +24,23 @@ export const causes = [
   {
     _id: 'hash-id-cause-2',
     title: 'Auxilie através da computação!',
-    image: 'https://i.imgur.com/qqsABsT.jpg',
+    image: 'https://i.imgur.com/9rggTcQ.jpg',
     city: 'Petrolina',
     state: 'PE',
     banners: [
       {
         _id: 'hash-id-banner-3',
-        image: 'https://i.imgur.com/jgBjoSO.png',
+        image: 'https://i.imgur.com/ZhRwY40.jpg',
       },
       {
         _id: 'hash-id-banner-4',
-        image: 'https://i.imgur.com/frcrbMN.jpg',
+        image: 'https://i.imgur.com/DIIBXdj.jpg',
       },
     ],
     account: {
       _id: 'hash-id-account-2',
       avatar: 'https://i.imgur.com/aQBqfbI.jpg',
-      name: 'Colegiado de Computação',
+      name: 'Projeto Lixo Eletrônico',
     },
   },
   {
