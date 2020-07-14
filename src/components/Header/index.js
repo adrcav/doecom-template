@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';
 import classNames from 'classnames';
+import { useIntl, FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import { AuthContext } from '../../services/auth';
 
@@ -15,26 +17,27 @@ import {
 import Menu from '../Menu';
 
 const Header = ({ userInfo }) => {
+  const intl = useIntl();
   const history = useHistory();
   const auth = useContext(AuthContext);
   const [showMenu, setShowMenu] = useState(false);
 
   const menuList = [
     {
-      title: 'Causas voluntárias',
+      title: intl.formatMessage(messages.menu.causes),
       icon: 'FaBuilding',
       url: '/',
       exact: true,
     },
     {
-      title: 'Configurações',
+      title: intl.formatMessage(messages.menu.settings),
       icon: 'FaUser',
       url: '/account',
       exact: true,
       private: true,
     },
     {
-      title: 'Sair da conta',
+      title: intl.formatMessage(messages.menu.logout),
       icon: 'FaSignOutAlt',
       url: '/logout',
       exact: true,
@@ -64,8 +67,8 @@ const Header = ({ userInfo }) => {
               <Account>
                 {!auth.isAuthenticated() && (
                   <p>
-                    <strong onClick={() => history.push('/login', { redirectUrl: history.location.pathname })}>Entrar</strong> ou<br />
-                    <strong onClick={() => history.push('/register')}>cadastrar-se</strong>
+                    <strong onClick={() => history.push('/login', { redirectUrl: history.location.pathname })}><FormattedMessage {...messages.login} /></strong> <FormattedMessage {...messages.or} /><br />
+                    <strong onClick={() => history.push('/register')}><FormattedMessage {...messages.signUp} /></strong>
                   </p>
                 )}
                 {auth.isAuthenticated() && (

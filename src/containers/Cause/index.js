@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useIntl, FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import { CauseImage, CauseTitleSection } from './styles';
 
@@ -12,6 +14,7 @@ import { AuthContext } from '../../services/auth';
 import { causes as dataCauses } from '../../util/data';
 
 const Cause = ({ match }) => {
+  const intl = useIntl();
   const history = useHistory();
   const auth = useContext(AuthContext);
   const { id } = match.params;
@@ -41,7 +44,9 @@ const Cause = ({ match }) => {
 
           <div className="row">
             <div className="col-12">
-              <CauseTitleSection>Ações realizadas pela causa</CauseTitleSection>
+              <CauseTitleSection>
+                <FormattedMessage {...messages.actions} />
+              </CauseTitleSection>
             </div>
             {cause.banners.map(banner => (
               <div key={banner._id} className="col-6">
@@ -55,7 +60,7 @@ const Cause = ({ match }) => {
           <FormButton
             type="button"
             theme="secondary"
-            value="DOAR AGORA"
+            value={intl.formatMessage(messages.give)}
             onClick={handleDonate}
           />
         </div>

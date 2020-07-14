@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useIntl, FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import Button from '../../components/Button';
 import CauseCard from '../../components/CauseCard';
@@ -8,20 +10,23 @@ import CauseCard from '../../components/CauseCard';
 import { causes as dataCauses } from '../../util/data';
 
 const Main = () => {
+  const intl = useIntl();
   const causes = dataCauses;
 
   return (
     <div className="container">
       <div className="row justify-content-between">
         <div className="col-6 d-flex align-items-center">
-          <p style={{ margin: 0, fontWeight: '500' }}>Sugestões para você</p>
+          <p style={{ margin: 0, fontWeight: '500' }}>
+            <FormattedMessage {...messages.suggestions} />
+          </p>
         </div>
         <div className="col-6 d-flex justify-content-end">
           <Button
             theme="primary"
             icon="FaLocationArrow"
             value="Petrolina/PE"
-            onClick={() => toast.info('Somente a cidade de Petrolina/PE está disponível no momento.')}
+            onClick={() => toast.info(intl.formatMessage(messages.regionUnavailable))}
           />
         </div>
       </div>

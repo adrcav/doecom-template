@@ -1,0 +1,20 @@
+{
+  "app.privacyPolicy": "Política de Privacidade",
+  "app.terms": "Termos de Uso",
+  "app.back": "Voltar",
+
+  "menu.causes": "Causas voluntárias",
+  "menu.settings": "Configurações",
+  "menu.logout": "Sair da conta",
+
+  "header.login": "Entrar",
+  "header.or": "ou",
+  "header.signUp": "cadastrar-se",
+
+  "causes.suggestions": "Sugestões para você",
+
+  "cause.actions": "Ações realizadas pela causa",
+  "cause.give": "DOAR AGORA",
+
+  "app.alerts.regionUnavailable": "Somente a cidade de Petrolina/PE está disponível no momento."
+}
