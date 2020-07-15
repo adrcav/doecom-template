@@ -1,5 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useIntl, FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import BackButton from '../BackButton';
 import NotificationIcon from '../NotificationIcon';
@@ -7,13 +9,14 @@ import Title from '../Title';
 import FormButton from '../FormButton';
 
 const RegisterSuccess = () => {
+  const intl = useIntl();
   const history = useHistory();
 
   return (
     <div className="container" style={{ marginBottom: '20px' }}>
-      <BackButton value="Ir para página principal" url="/" />
+      <BackButton value={intl.formatMessage(messages.backButton)} url="/" />
 
-      <Title value="Parabéns!" align="center" />
+      <Title value={intl.formatMessage(messages.title)} align="center" />
 
       <div className="row justify-content-center mt-3">
         <div className="col-lg-6 col-xl-5">
@@ -25,13 +28,13 @@ const RegisterSuccess = () => {
             marginBottom: '40px',
             padding: '0 15px'
           }}>
-            Seu cadastro foi efetuado com sucesso! Agora você já pode usufruir de todas as funcionalidades da plataforma Doecom.
+            <FormattedMessage {...messages.description} />
           </p>
 
           <FormButton
             type="button"
             theme="primary"
-            value="Entrar na sua conta"
+            value={intl.formatMessage(messages.mainButton)}
             onClick={() => history.push('/login')}
           />
         </div>

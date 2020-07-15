@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useIntl, FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import { AuthContext } from '../../services/auth';
 
@@ -13,6 +15,7 @@ import Title from '../../components/Title';
 import { states as dataStates } from '../../util/data';
 
 export const Register = () => {
+  const intl = useIntl();
   const history = useHistory();
   const auth = useContext(AuthContext);
 
@@ -32,45 +35,45 @@ export const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    toast.success('Os dados da sua conta foram alterados com sucesso!');
+    toast.success(intl.formatMessage(messages.alerts.updated));
   };
 
   return (
     <div className="container mb-4">
       <BackButton />
 
-      <Title value="Configurações" />
+      <Title value={intl.formatMessage(messages.title)} />
       <p style={{
         textAlign: 'right',
         color: '#999',
         fontStyle: 'italic',
         fontSize: '.9rem',
         margin: '-10px 0 10px'
-      }}>(*) Campo obrigatório</p>
+      }}>(*) <FormattedMessage {...messages.fieldRequired} /></p>
 
       <div className="row justify-content-center">
         <div className="col-lg-6">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <Input
-                label="Nome: *"
+                label={`${intl.formatMessage(messages.nameLabel)} *`}
                 type="text"
                 name="name"
                 className="form-control"
-                placeholder="Informe o seu nome e sobrenome"
-                value="Ricardo da Doecom"
+                placeholder={intl.formatMessage(messages.nameDescription)}
+                defaultValue="Ricardo da Doecom"
                 required={true}
               />
             </div>
 
             <div className="form-group">
               <Input
-                label="E-mail: *"
+                label={`${intl.formatMessage(messages.emailLabel)} *`}
                 type="email"
                 name="email"
                 className="form-control"
-                placeholder="Informe o seu e-mail"
-                value="ricardo@doecom.netlify.app"
+                placeholder={intl.formatMessage(messages.emailDescription)}
+                defaultValue="ricardo@doecom.netlify.app"
                 required={true}
               />
             </div>
@@ -79,12 +82,12 @@ export const Register = () => {
               <div className="col-5">
                 <div className="form-group">
                   <Select
-                    label="Estado: *"
+                    label={`${intl.formatMessage(messages.stateLabel)} *`}
                     name="state"
                     className="form-control"
-                    placeholderValue="UF"
+                    placeholderValue={intl.formatMessage(messages.stateDescription)}
                     options={states}
-                    value="PE"
+                    defaultValue="PE"
                     required={true}
                   />
                 </div>
@@ -92,12 +95,12 @@ export const Register = () => {
               <div className="col-7">
                 <div className="form-group">
                   <Input
-                    label="Cidade: *"
+                    label={`${intl.formatMessage(messages.cityLabel)} *`}
                     type="text"
                     name="city"
                     className="form-control"
-                    placeholder="Sua cidade"
-                    value="Petrolina"
+                    placeholder={intl.formatMessage(messages.nameDescription)}
+                    defaultValue="Petrolina"
                     required={true}
                   />
                 </div>
@@ -107,7 +110,7 @@ export const Register = () => {
             <FormButton
               type="submit"
               theme="primary"
-              value="Alterar dados"
+              value={intl.formatMessage(messages.buttonSubmit)}
             />
           </form>
         </div>

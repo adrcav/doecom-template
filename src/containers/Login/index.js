@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import { useIntl, FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import { AuthContext } from '../../services/auth';
 
@@ -9,6 +11,7 @@ import FormButton from '../../components/FormButton';
 import Title from '../../components/Title';
 
 export const Login = ({ location }) => {
+  const intl = useIntl();
   const history = useHistory();
   const auth = useContext(AuthContext);
   let redirectUrl = '';
@@ -41,31 +44,31 @@ export const Login = ({ location }) => {
     <div className="container">
       <BackButton />
 
-      <Title value="Login" />
+      <Title value={intl.formatMessage(messages.title)} />
 
       <div className="row justify-content-center">
         <div className="col-lg-6">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <Input
-                label="E-mail:"
+                label={intl.formatMessage(messages.emailLabel)}
                 type="email"
                 name="email"
                 icon="FaRegEnvelope"
                 className="form-control"
-                placeholder="Informe o seu e-mail"
+                placeholder={intl.formatMessage(messages.emailDescription)}
                 required={true}
               />
             </div>
 
             <div className="form-group">
               <Input
-                label="Senha:"
+                label={intl.formatMessage(messages.passwordLabel)}
                 type="password"
                 name="password"
                 icon="FaLock"
                 className="form-control"
-                placeholder="Informe sua senha"
+                placeholder={intl.formatMessage(messages.passwordDescription)}
                 required={true}
               />
             </div>
@@ -73,7 +76,7 @@ export const Login = ({ location }) => {
             <FormButton
               type="submit"
               theme="primary"
-              value="Entrar"
+              value={intl.formatMessage(messages.buttonSubmit)}
             />
           </form>
 
@@ -83,8 +86,10 @@ export const Login = ({ location }) => {
             textAlign: 'center',
             marginTop: '15px'
           }}>
-            Ainda não tem uma conta?
-            <NavLink to="/register" style={{ fontWeight: 500, marginLeft: '3px' }}>Cadastre-se!</NavLink>
+            <FormattedMessage {...messages.noAccount.question} />
+            <NavLink to="/register" style={{ fontWeight: 500, marginLeft: '3px' }}>
+              <FormattedMessage {...messages.noAccount.signUp} />
+            </NavLink>
           </p>
         </div>
       </div>

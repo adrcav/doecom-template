@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import * as FontAwesome from 'react-icons/fa';
 import classNames from 'classnames';
+import { useIntl } from 'react-intl';
+import messages from './messages';
 
 import { AuthContext } from '../../services/auth';
 
@@ -9,6 +11,7 @@ import { Container } from './styles';
 import Button from '../Button';
 
 const Menu = ({ data, landscape, show = false, onClickVertical }) => {
+  const intl = useIntl();
   const history = useHistory();
   const auth = useContext(AuthContext);
 
@@ -48,10 +51,10 @@ const Menu = ({ data, landscape, show = false, onClickVertical }) => {
                 }}
                 style={{ marginRight: '10px' }} onClick={onClickVertical || null}
               >
-                <Button theme="primary-outline" icon="FaSignInAlt" value="Entrar" />
+                <Button theme="primary-outline" icon="FaSignInAlt" value={intl.formatMessage(messages.login)} />
               </NavLink>
               <NavLink to="/register" onClick={onClickVertical || null}>
-                <Button theme="primary" icon="FaUserPlus" value="Cadastrar-se" />
+                <Button theme="primary" icon="FaUserPlus" value={intl.formatMessage(messages.signUp)} />
               </NavLink>
             </div>
           </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useIntl, FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import BackButton from '../BackButton';
 import NotificationIcon from '../NotificationIcon';
@@ -7,30 +9,31 @@ import Title from '../Title';
 import FormButton from '../FormButton';
 
 const GiveSuccess = () => {
+  const intl = useIntl();
   const history = useHistory();
 
   return (
     <div className="container" style={{ marginBottom: '20px' }}>
-      <BackButton value="Ir para página principal" url="/" />
+      <BackButton value={intl.formatMessage(messages.backButton)} url="/" />
 
       <div className="row justify-content-center mt-3">
         <div className="col-lg-6 col-xl-5">
           <NotificationIcon theme="secondary" icon="FaHandHoldingHeart" />
 
-          <Title value="Doação realizada! 👏" align="center" />
+          <Title value={`${intl.formatMessage(messages.title)} 👏`} align="center" />
           <p style={{
             color: '#666666',
             textAlign: 'center',
             marginBottom: '40px',
             padding: '0 15px'
           }}>
-            O pagamento foi confirmado com sucesso e sua doação será enviada diretamente à causa voluntária selecionada.
+            <FormattedMessage {...messages.description} />
           </p>
 
           <FormButton
             type="button"
             theme="primary"
-            value="Voltar à página principal"
+            value={intl.formatMessage(messages.mainButton)}
             onClick={() => history.push('/')}
           />
         </div>

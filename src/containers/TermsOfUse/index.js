@@ -1,4 +1,6 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
+import messages from './messages';
 
 import { TermsContainer } from './styles';
 
@@ -7,16 +9,20 @@ import Title from '../../components/Title';
 
 import { termsOfUse } from '../../util/terms';
 
-export const TermsOfUse = () => (
-  <div className="container">
-    <BackButton />
+export const TermsOfUse = () => {
+  const intl = useIntl();
 
-    <Title value="Termos de Uso" />
+  return (
+    <div className="container">
+      <BackButton />
 
-    <TermsContainer
-      dangerouslySetInnerHTML={{ __html: termsOfUse }}
-    ></TermsContainer>
-  </div>
-);
+      <Title value={intl.formatMessage(messages.title)} />
+
+      <TermsContainer
+        dangerouslySetInnerHTML={{ __html: termsOfUse }}
+      ></TermsContainer>
+    </div>
+  );
+};
 
 export default TermsOfUse;

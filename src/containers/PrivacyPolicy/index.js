@@ -1,4 +1,6 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
+import messages from './messages';
 
 import { TermsContainer } from './styles';
 
@@ -7,16 +9,20 @@ import Title from '../../components/Title';
 
 import { privacyPolicy } from '../../util/terms';
 
-export const PrivacyPolicy = () => (
-  <div className="container">
-    <BackButton />
+export const PrivacyPolicy = () => {
+  const intl = useIntl();
 
-    <Title value="Política de Privacidade" />
+  return (
+    <div className="container">
+      <BackButton />
 
-    <TermsContainer
-      dangerouslySetInnerHTML={{ __html: privacyPolicy }}
-    ></TermsContainer>
-  </div>
-);
+      <Title value={intl.formatMessage(messages.title)} />
+
+      <TermsContainer
+        dangerouslySetInnerHTML={{ __html: privacyPolicy }}
+      ></TermsContainer>
+    </div>
+  );
+};
 
 export default PrivacyPolicy;

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import * as FontAwesome from 'react-icons/fa';
+import { useIntl, FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import { SafeAlert } from './styles';
 
@@ -15,18 +17,19 @@ import Title from '../../components/Title';
 import { causes as dataCauses } from '../../util/data';
 
 const Give = ({ match }) => {
+  const intl = useIntl();
   const { id } = match.params;
   const history = useHistory();
 
   const cause = dataCauses.filter(cause => cause._id === id)[0] || null;
   const paymentMethods = [
     {
-      text: 'Boleto',
+      text: intl.formatMessage(messages.methods.boleto),
       value: 'boleto',
       icon: 'FaBarcode',
     },
     {
-      text: 'Cartão de crédito',
+      text: intl.formatMessage(messages.methods.creditCard),
       value: 'credit_card',
       icon: 'FaRegCreditCard',
     },
@@ -44,7 +47,7 @@ const Give = ({ match }) => {
     <div className="container" style={{ marginBottom: '20px' }}>
       <BackButton />
 
-      <Title value="Doação" />
+      <Title value={intl.formatMessage(messages.title)} />
 
       <CauseInfo data={cause} />
 
@@ -54,19 +57,19 @@ const Give = ({ match }) => {
         fontStyle: 'italic',
         fontSize: '.9rem',
         margin: 0
-      }}>(*) Campo obrigatório</p>
+      }}>(*) <FormattedMessage {...messages.fieldRequired} /></p>
 
       <div className="row">
         <div className="col-lg-6">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <Input
-                label="Valor: *"
+                label={`${intl.formatMessage(messages.amountLabel)} *`}
                 type="tel"
                 name="value"
                 icon="FaDollarSign"
                 className="form-control"
-                placeholder="Informe o valor"
+                placeholder={intl.formatMessage(messages.amountDescription)}
                 maskType="currency"
                 pattern="*"
                 required={true}
@@ -75,7 +78,7 @@ const Give = ({ match }) => {
 
             <div className="row">
               <div className="col-12">
-                <Label value="Método de pagamento: *" />
+                <Label value={`${intl.formatMessage(messages.methodLabel)} *`} />
               </div>
               {paymentMethods.map(method => (
                 <div key={method.value} className="col-6">
@@ -93,20 +96,26 @@ const Give = ({ match }) => {
             <hr/>
 
             <SafeAlert>
-              <p>Ao continuar, você será redirecionado(a) à tela de pagamento do <strong>PagSeguro</strong> para finalizar o pagamento.</p>
+              <p>
+                <FormattedMessage {...messages.info.message} />
+              </p>
             </SafeAlert>
 
             <SafeAlert style={{ marginTop: '10px', marginBottom: '15px' }}>
               <div className="icon">
                 <FontAwesome.FaLock />
               </div>
-              <p><strong>Não se preocupe! Este é um ambiente totalmente seguro.</strong></p>
+              <p>
+                <strong>
+                  <FormattedMessage {...messages.info.security} />
+                </strong>
+              </p>
             </SafeAlert>
 
             <FormButton
               type="submit"
               theme="primary"
-              value="Continuar"
+              value={intl.formatMessage(messages.buttonSubmit)}
             />
           </form>
         </div>
