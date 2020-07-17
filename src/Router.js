@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import { margins } from './components/theme';
 
 import { AuthContext } from './services/auth';
@@ -24,10 +25,15 @@ import TermsOfUse from './containers/TermsOfUse';
 
 import { userInfo as dataUserInfo } from './util/data';
 
+const { REACT_APP_GA_ID } = process.env;
+
 const Router = () => {
   let loading = false;
   const auth = useContext(AuthContext);
   let userInfo = {};
+
+  ReactGA.initialize(REACT_APP_GA_ID);
+  ReactGA.pageview(window.location.pathname + window.location.search);
 
   if (auth.isAuthenticated()) {
     userInfo = dataUserInfo;
