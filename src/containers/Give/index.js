@@ -13,6 +13,7 @@ import Label from '../../components/Label';
 import FormButton from '../../components/FormButton';
 import FormRadioCard from '../../components/FormRadioCard';
 import Title from '../../components/Title';
+import PrototypeAlert from '../../components/PrototypeAlert';
 
 import { causes as dataCauses } from '../../util/data';
 
@@ -48,6 +49,8 @@ const Give = ({ match }) => {
       <BackButton />
 
       <Title value={intl.formatMessage(messages.title)} />
+
+      <PrototypeAlert />
 
       <CauseInfo data={cause} />
 
