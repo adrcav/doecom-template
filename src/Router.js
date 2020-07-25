@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import { margins } from './components/theme';
 
-import { AuthContext } from './services/auth';
+import { useStateValue } from './services/state';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -23,27 +23,20 @@ import Logout from './containers/Logout';
 import PrivacyPolicy from './containers/PrivacyPolicy';
 import TermsOfUse from './containers/TermsOfUse';
 
-import { userInfo as dataUserInfo } from './util/data';
-
 const { REACT_APP_GA_ID } = process.env;
 
 const Router = () => {
   let loading = false;
-  const auth = useContext(AuthContext);
-  let userInfo = {};
+  const [{ account }] = useStateValue();
 
   ReactGA.initialize(REACT_APP_GA_ID);
   ReactGA.pageview(window.location.pathname + window.location.search);
-
-  if (auth.isAuthenticated()) {
-    userInfo = dataUserInfo;
-  }
 
   if (loading) return (<Loading />);
 
   return (
     <BrowserRouter>
-      <Header userInfo={userInfo} />
+      <Header userInfo={account} />
       <div style={{ marginTop: margins.header }}>
         <Switch>
           <Route path="/" component={Main} exact />

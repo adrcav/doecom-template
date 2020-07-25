@@ -4,16 +4,20 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 import { AuthContext } from '../../services/auth';
+import { useStateValue } from '../../services/state';
 
 import BackButton from '../../components/BackButton';
 import Input from '../../components/Input';
 import FormButton from '../../components/FormButton';
 import Title from '../../components/Title';
 
+import { userInfo } from '../../util/data';
+
 export const Login = ({ location }) => {
   const intl = useIntl();
   const history = useHistory();
   const auth = useContext(AuthContext);
+  const [, dispatch] = useStateValue();
   let redirectUrl = '';
 
   if (location.state) {
@@ -35,9 +39,15 @@ export const Login = ({ location }) => {
       expiresIn: new Date().getTime(),
       tokenType: 'Bearer'
     };
-
     auth.setSession(data);
-    window.location.href = redirectUrl || '/';
+
+    const dataAccount = userInfo;
+    dispatch({
+      type: 'updateAccount',
+      value: dataAccount
+    });
+
+    history.push(redirectUrl || '/');
   };
 
   return (

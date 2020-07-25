@@ -74,7 +74,7 @@ const Header = ({ userInfo }) => {
                 {auth.isAuthenticated() && (
                   <p style={{ display: 'none' }}>
                     Olá,<br />
-                    <strong>{userInfo.name.split(' ')[0]}</strong>
+                    <strong>{userInfo.name ? userInfo.name.split(' ')[0] : ''}</strong>
                   </p>
                 )}
                 <img

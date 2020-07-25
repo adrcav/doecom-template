@@ -5,6 +5,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 import { AuthContext } from '../../services/auth';
+import { useStateValue } from '../../services/state';
 
 import BackButton from '../../components/BackButton';
 import Input from '../../components/Input';
@@ -18,13 +19,9 @@ export const Register = () => {
   const intl = useIntl();
   const history = useHistory();
   const auth = useContext(AuthContext);
+  const [{ account }] = useStateValue();
 
-  const states = dataStates.map(state => {
-    return {
-      value: state.uf,
-      text: state.name
-    };
-  });
+  const states = dataStates.map(state => ({ value: state.uf, text: state.name }));
 
   useEffect(() => {
     if (!auth.isAuthenticated()) {
@@ -61,7 +58,7 @@ export const Register = () => {
                 name="name"
                 className="form-control"
                 placeholder={intl.formatMessage(messages.nameDescription)}
-                defaultValue="Ricardo da Doecom"
+                defaultValue={account.name}
                 required={true}
               />
             </div>
@@ -73,7 +70,7 @@ export const Register = () => {
                 name="email"
                 className="form-control"
                 placeholder={intl.formatMessage(messages.emailDescription)}
-                defaultValue="ricardo@doecom.netlify.app"
+                defaultValue={account.email}
                 required={true}
               />
             </div>
@@ -87,7 +84,7 @@ export const Register = () => {
                     className="form-control"
                     placeholderValue={intl.formatMessage(messages.stateDescription)}
                     options={states}
-                    defaultValue="PE"
+                    defaultValue={account.state}
                     required={true}
                   />
                 </div>
@@ -100,7 +97,7 @@ export const Register = () => {
                     name="city"
                     className="form-control"
                     placeholder={intl.formatMessage(messages.nameDescription)}
-                    defaultValue="Petrolina"
+                    defaultValue={account.city}
                     required={true}
                   />
                 </div>

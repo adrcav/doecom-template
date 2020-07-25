@@ -39,8 +39,6 @@ const Give = ({ match }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log('> form', event.target);
-
     history.push('/give/success');
   };
 

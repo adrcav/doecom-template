@@ -20,12 +20,7 @@ export const Register = () => {
   const auth = useContext(AuthContext);
   const [agreedTerms, setAgreedTerms] = useState(false);
 
-  const states = dataStates.map(state => {
-    return {
-      value: state.uf,
-      text: state.name
-    };
-  });
+  const states = dataStates.map(state => ({ value: state.uf, text: state.name }));
 
   useEffect(() => {
     if (auth.isAuthenticated()) {

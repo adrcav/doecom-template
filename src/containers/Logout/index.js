@@ -4,6 +4,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 import { AuthContext } from '../../services/auth';
+import { useStateValue } from '../../services/state';
 
 import BackButton from '../../components/BackButton';
 import NotificationIcon from '../../components/NotificationIcon';
@@ -14,6 +15,7 @@ const Logout = () => {
   const intl = useIntl();
   const history = useHistory();
   const auth = useContext(AuthContext);
+  const [, dispatch] = useStateValue();
 
   useEffect(() => {
     if (!auth.isAuthenticated()) {
@@ -23,7 +25,13 @@ const Logout = () => {
 
   const handleLogout = () => {
     auth.logout();
-    window.location.href = '/';
+
+    dispatch({
+      type: 'updateAccount',
+      value: {}
+    });
+
+    history.push('/');
   };
 
   return (
